@@ -1,6 +1,12 @@
-import { Component, ElementRef, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+  AfterViewInit
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 interface Skill {
   name: string;
@@ -15,7 +21,7 @@ interface Certification {
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule, SlickCarouselModule],
+  imports: [CommonModule, CarouselModule],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
@@ -44,17 +50,35 @@ export class SkillsComponent implements AfterViewInit {
     }
   ];
 
+  certCarouselOptions = {
+    loop: true,
+    margin: 10,
+    nav: true,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    responsive: {
+      0: { items: 1 },
+      768: { items: 1 },
+      1024: { items: 2 }
+    },
+    navText: ['🡠', '🡢']
+  };
+
   @ViewChildren('skillBar', { read: ElementRef }) skillBars!: QueryList<ElementRef>;
 
   ngAfterViewInit(): void {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fill');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fill');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
     this.skillBars.forEach((bar) => observer.observe(bar.nativeElement));
   }

@@ -11,10 +11,13 @@
   </div>
 
   <h2 class="cert-header">🏆 Certifications</h2>
-  <ngx-slick-carousel class="carousel" [config]="{ slidesToShow: 1, autoplay: true, dots: true }">
-    <div ngxSlickItem *ngFor="let cert of certifications" class="cert-item">
-      <img [src]="cert.img" [alt]="cert.title" />
-      <p>{{ cert.title }}</p>
-    </div>
-  </ngx-slick-carousel>
+
+  <owl-carousel-o [options]="certCarouselOptions">
+    <ng-template carouselSlide *ngFor="let cert of certifications">
+      <div class="cert-item">
+        <img [src]="cert.img" [alt]="cert.title" />
+        <p>{{ cert.title }}</p>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
 </section>
