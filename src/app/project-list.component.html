@@ -1,0 +1,24 @@
+<section class="projects">
+  <h2>📁 Projects</h2>
+
+  <div class="project-grid">
+    <div class="project-card" *ngFor="let project of projects">
+      <img [src]="project.image" alt="{{ project.title }}" class="project-image" />
+
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
+
+      <div class="tech-stack">
+        <span class="tech-tag" *ngFor="let tech of project.technologies">{{ tech }}</span>
+      </div>
+
+      <a [href]="project.link" target="_blank" class="project-link">View Project</a>
+
+      <!-- Embedded Video Section -->
+      <video *ngIf="project.video" class="project-video" controls>
+        <source [src]="project.video" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>

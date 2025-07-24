@@ -1,0 +1,32 @@
+.footer {
+  background: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  margin-top: auto;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+
+    li a {
+      color: #00ffee;
+      text-decoration: none;
+
+      &:hover {
+        text-shadow: 0 0 5px #00ffee;
+      }
+    }
+  }
+}

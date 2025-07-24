@@ -1,0 +1,35 @@
+.floating-navbar {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 0 15px #00ffee;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+
+    li {
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: bold;
+
+        &:hover {
+          color: #00ffee;
+          text-shadow: 0 0 6px #00ffee;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+.contact {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+    }
+
+    .tick {
+      position: absolute;
+      right: 10px;
+      top: 40px;
+      color: green;
+      font-size: 1.2rem;
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+  }
+
+  button[type='submit'] {
+    align-self: flex-start;
+    padding: 0.75rem 2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover:enabled {
+      background-color: #0056b3;
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  .success-msg {
+    margin-top: 1rem;
+    color: green;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 2rem 1rem;
+
+    .contact-form {
+      padding: 1rem;
+    }
+
+    .form-group {
+      .tick {
+        top: 36px;
+        right: 8px;
+      }
+    }
+  }
+}

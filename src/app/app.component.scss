@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  scroll-behavior: smooth;
+}
+
+.welcome-banner {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 900;
+  font-size: 2.5rem;
+  line-height: 3.5rem; /* fixes vertical cut */
+  color: #0b07e5;
+  text-shadow: 0 0 5px #b0ce16, 0 0 10px #c4e714;
+  padding: 1rem 0; /* gives vertical breathing room */
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.typed-text {
+  display: inline-block;
+  border-right: 2px solid #00ffee;
+  animation: typing 4s steps(30, end) forwards, blink 0.8s infinite;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cursor {
+  display: inline-block;
+  font-weight: bold;
+  animation: blink 1s infinite;
+  color: #00ffee;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
