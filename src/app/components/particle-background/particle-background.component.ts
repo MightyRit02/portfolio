@@ -20,19 +20,19 @@ export class ParticleBackgroundComponent implements OnInit {
           zIndex: -1
         },
         background: {
-          color: '#ffffff'
+          color: '#ffb6c1'
         },
         fpsLimit: 60,
         particles: {
           number: { value: 80 },
-          size: { value: 3 },
+          size: { value: 4 },
           color: { value: '#f40c7cff' },
-           opacity: { value: 0.4},
+           opacity: { value: 1},
           links: {
             enable: true,
             distance: 150,
             color: '#1c0101ff',
-            opacity: 0.2   
+            opacity: 0.4   
           },
           move: {
             enable: true,

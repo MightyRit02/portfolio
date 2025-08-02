@@ -7,3 +7,6 @@
   z-index: -1;               // stays behind other content
   pointer-events: none;      // prevents interaction
 }
+canvas {
+  background: transparent !important;
+}

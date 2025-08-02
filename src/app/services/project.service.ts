@@ -1,20 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Project {
-  _id?: string;
-  title: string;
-  description: string;
-  link: string;
-  image: string;
-}
+import { Project } from './project';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'http://localhost:5000/projects';
+  private apiUrl = 'http://localhost:5000/api/projects'; // adjust if your backend is elsewhere
 
   constructor(private http: HttpClient) {}
 

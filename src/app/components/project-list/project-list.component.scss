@@ -1,140 +1,163 @@
-.projects {
-  padding: 2rem;
-  background-color: transparent;
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
+$primary: #7c3aed;
+$gradient: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+$text: #1f2d3d;
+$radius: 12px;
+$shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
 
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2.5rem; // increased margin below heading
-  color: #e01212;
-  text-shadow: 0 0 10px #00ffe0;
-  font-weight: 700;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+.projects-wrapper {
+  padding: 1rem;
+  background: transparent;
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 0 12px rgba(0, 255, 234, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 2px solid transparent;
-  background-clip: padding-box;
   position: relative;
+  background: #cb94f7;
+  backdrop-filter: blur(8px);
+  border-radius: $radius;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px) scale(0.98);
+  opacity: 0.5;
+  transition: all 0.35s ease, filter 0.35s ease;
+  box-shadow: $shadow;
+  min-height: 320px; // shorter height
+  border: 1px solid rgba(240, 9, 9, 0.945);
 
-  // ✨ Neon Gradient Glow Border
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    bottom: -2px;
-    left: -2px;
-    right: -2px;
-    z-index: -1;
-    background: linear-gradient(135deg, #00ffd5, #ff00e0, #00aaff);
-    border-radius: 20px;
-    filter: blur(5px);
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
+  &.visible {
+    transform: translateY(0) scale(1);
+    opacity: 0.55; // still faded until hover
   }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+    filter: saturate(1.1);
+    box-shadow: 0 30px 50px -5px rgba(88, 0, 240, 0.941);
+  }
 
-    &::before {
-      opacity: 1;
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 140px; // reduced
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-bottom: 2px solid rgba(124, 58, 237, 0.3);
+      transition: transform .4s ease;
+      filter: brightness(0.9);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: .5rem;
+    }
+
+    .view-btn {
+      background: white;
+      padding: .35rem .75rem;
+      border-radius: 8px;
+      font-size: .65rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: $text;
+      box-shadow: 0 8px 18px rgba(222, 177, 15, 0.89);
+      border: 1px solid rgba(124, 58, 237, 0.4);
+      transition: background .2s, transform .2s;
+      &:hover {
+        background: $primary;
+        color: white;
+        transform: translateY(-1px);
+      }
     }
   }
-}
 
-.project-image,
-.project-video {
-  width: 100%;
-  margin-top: 1rem;
-  border-radius: 10px;
-  outline: none;
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .info {
+    padding: .75rem 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
 
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
-  }
-}
+    h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $text;
+    }
 
-.project-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-  text-shadow: 0 0 4px #00ffee;
-}
+    p {
+      margin: 0;
+      font-size: .8rem;
+      color: darken($text, 15%);
+      flex: 1;
+    }
 
-.project-card p {
-  font-size: 1rem;
-  color: #9fffe2;
-  margin-bottom: 1rem;
-}
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
 
-.tech-stack {
-  margin-bottom: 1rem;
-}
+      .tech {
+        background: rgba(124, 58, 237, 0.1);
+        color: #6d28d9;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: .55rem;
+        font-weight: 600;
+      }
+    }
 
-.tech-tag {
-  display: inline-block;
-  background: rgba(0, 255, 200, 0.1);
-  color: #00ffc8;
-  padding: 6px 12px;
-  margin: 4px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  border: 1px solid #00ffc8;
-  transition: background 0.3s ease;
+    .actions {
+      display: flex;
+      gap: .5rem;
+      margin-top: auto;
 
-  &:hover {
-    background: rgba(0, 255, 200, 0.3);
-  }
-}
+      .btn {
+        flex: 1;
+        text-align: center;
+        padding: .45rem .6rem;
+        border-radius: 8px;
+        font-size: .65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(124, 58, 237, 0.6);
+        background: rgba(255,255,255,0.9);
+        color: $text;
+        transition: all .2s;
 
-.project-link {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: #fff;
-  background: linear-gradient(135deg, #00ffee, #0099ff);
-  padding: 10px 18px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+        &.primary {
+          background: $gradient;
+          color: white;
+          border: none;
+        }
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-    background: linear-gradient(135deg, #00aaff, #00ffc8);
+        &:hover {
+          filter: brightness(1.05);
+        }
+      }
+    }
+
+    .video-preview {
+      margin-top: .5rem;
+      video {
+        width: 100%;
+        border-radius: 8px;
+        background: #000;
+      }
+    }
   }
 }

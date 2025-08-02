@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  link: string;
+  video?: string;
+}
 
 @Component({
   selector: 'app-project-list',
@@ -8,15 +17,15 @@ import { CommonModule } from '@angular/common';
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss']
 })
-export class ProjectListComponent {
-  projects = [
+export class ProjectListComponent implements AfterViewInit {
+  projects: Project[] = [
     {
       title: 'Portfolio Website',
       description: 'A personal portfolio site built with Angular.',
       image: 'assets/images/portfolio.png',
-      technologies: ['Angular', 'SCSS'],
+      technologies: ['Angular', 'SCSS', 'TypeScript'],
       link: 'https://yourportfolio.com',
-      video: 'assets/videos/portfolio-demo.mp4'  // Embedded video below
+      video: 'assets/videos/portfolio-demo.mp4'
     },
     {
       title: 'Task Manager App',
@@ -35,4 +44,22 @@ export class ProjectListComponent {
       video: 'assets/videos/video-project.mp4'
     }
   ];
+
+  @ViewChildren('cardRef', { read: ElementRef }) cardRefs!: QueryList<ElementRef>;
+
+  ngAfterViewInit(): void {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    this.cardRefs.forEach((c) => observer.observe(c.nativeElement));
+  }
 }
